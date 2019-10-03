@@ -85,20 +85,29 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Turbocharging vs Natural Aspiration vs Electrification',
+    date: 'Oct 2nd, 2019',
+    firstParagraph: 'I\'ll tell you how I feel about school, Jerry. It\'s a waste of time. Bunch of people runnin\' around bumpin\' into each other, got a guy up front says, 2 + 2, and the people in the back say, 4. Then the bell rings and they give you a carton of milk and a piece of paper that says you can go take a dump or somethin\'. I mean, it\'s not a place for smart people, Jerry. I know that\'s not a popular opinion, but that\'s my two cents on the issue. There is no god, Summer; gotta rip that band-aid off now you\'ll thank me later. That guy is the Red Grin Grumbold of pretending he knows what\'s going on. Oh you agree huh? You like that Red Grin Grumbold reference? Well guess what, I made him up. You really are your father\'s children. Think for yourselves, don\'t be sheep. These 2 halves don\'t belong together, bitch!',
+    secondParagraph: 'Listen, Morty, I hate to break it to you but what people call "love" is just a chemical reaction that compels animals to breed. It hits hard, Morty, then it slowly fades, leaving you stranded in a failing marriage. I did it. Your parents are gonna do it. Break the cycle, Morty. Rise above. Focus on science. Don\'t be trippin dog we got you. Come on, flip the pickle, Morty. You\'re not gonna regret it. The payoff is huge. We all wanna die, we\'re meeseeks!',
+    thirdParagraph: 'Listen, Morty, I hate to break it to you but what people call love is just a chemical reaction that compels animals to breed. Meeseeks don\'t usually have to exist for this long. It\'s gettin\' weeeiiird. Oh good job Morty! You killed my best customer but you saved a mind reading fart! Come on, flip the pickle, Morty. You\'re not gonna regret it. The payoff is huge.'
   }
 ];
 
+// grab element to start process of appending to element already in html file
 const articles = document.querySelector('.articles');
 
 data.forEach(data => {
-    articles.appendChild(createComponent(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph))
+    articles.appendChild(createComponent(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph));
 });
 
-function createComponent(title, data) {
+// create new component, passing in the data from the data object
+function createComponent(title, date, firstParagraph, secondParagraph, thirdParagraph) {
     // create elements
     const article = document.createElement('div');
     const titleH2 = document.createElement('h2');
-    const date = document.createElement('p');
+    const articleDate = document.createElement('p');
     const para1 = document.createElement('p');
     const para2 = document.createElement('p');
     const para3 = document.createElement('p');
@@ -106,7 +115,29 @@ function createComponent(title, data) {
     const btn = document.createElement('button');
 
     // append new elements to html structure
+    articles.appendChild(article);
+    article.appendChild(titleH2);
+    article.appendChild(articleDate);
+    article.appendChild(para1);
+    article.appendChild(para2);
+    article.appendChild(para3);
 
+    // set class names
+    article.classList.add('article');
+    articleDate.classList.add('date');
+    btnSpan.classList.add('expandButton');
+
+    // set text content
+    titleH2.textContent = title,
+    date.textContent = date,
+    para1.textContent = firstParagraph,
+    para2.textContent = secondParagraph,
+    para3.textContent = thirdParagraph;
+
+    // add event listener to expand button span
+    btnSpan.addEventListener('click', () => {
+        article.classList.toggle('article-open');
+    });
 
     return component;
 }
