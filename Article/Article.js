@@ -88,6 +88,28 @@ const data = [
   }
 ];
 
+const articles = document.querySelector('.articles');
+
+data.forEach(data => {
+    articles.appendChild(createComponent(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph))
+});
+
+function createComponent(title, data) {
+    // create elements
+    const article = document.createElement('div');
+    const titleH2 = document.createElement('h2');
+    const date = document.createElement('p');
+    const para1 = document.createElement('p');
+    const para2 = document.createElement('p');
+    const para3 = document.createElement('p');
+    const btnSpan = document.createElement('span');
+    const btn = document.createElement('button');
+
+    // append new elements to html structure
+
+
+    return component;
+}
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
   
   <div class="article">
