@@ -148,7 +148,21 @@ function createComponent(title, date, firstParagraph, secondParagraph, thirdPara
     });
 
     return article;
-}
+};
+
+// add GSAP script to head
+const addScript = document.createElement('script');
+const head = document.querySelector('head');
+head.append(addScript);
+addScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js';
+
+const h1 = document.querySelector("h1");
+console.log(h1);
+
+// add animations
+TweenMax.to("h1", 7, {color:"#000"});
+TweenMax.to(".article", 6, {height:450});
+
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
   
   <div class="article">
