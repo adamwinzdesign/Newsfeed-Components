@@ -112,7 +112,6 @@ function createComponent(title, date, firstParagraph, secondParagraph, thirdPara
     const para2 = document.createElement('p');
     const para3 = document.createElement('p');
     const btnSpan = document.createElement('span');
-    const btn = document.createElement('button');
 
     // append new elements to html structure
     articles.appendChild(article);
@@ -121,6 +120,7 @@ function createComponent(title, date, firstParagraph, secondParagraph, thirdPara
     article.appendChild(para1);
     article.appendChild(para2);
     article.appendChild(para3);
+    article.appendChild(btnSpan);
 
     // set class names
     article.classList.add('article');
@@ -129,17 +129,18 @@ function createComponent(title, date, firstParagraph, secondParagraph, thirdPara
 
     // set text content
     titleH2.textContent = title,
-    date.textContent = date,
+    articleDate.textContent = date,
     para1.textContent = firstParagraph,
     para2.textContent = secondParagraph,
     para3.textContent = thirdParagraph;
+    btnSpan.textContent = 'Expand';
 
     // add event listener to expand button span
     btnSpan.addEventListener('click', () => {
         article.classList.toggle('article-open');
     });
 
-    return component;
+    return article;
 }
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
   
